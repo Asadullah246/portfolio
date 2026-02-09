@@ -73,7 +73,7 @@ Tools (Git, Docker, payment system( stripe, paypal, sslcommerz))
 Other skills (UI/UX, testing, DevOps basics)
 
 
-# my actual skills :
+### my actual skills :
 
 frontend skills:
 - React.js/next.js
