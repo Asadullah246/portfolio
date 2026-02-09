@@ -41,7 +41,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className="antialiased min-h-screen">
+      <body className="antialiased min-h-screen" suppressHydrationWarning>
         <ThemeProvider>
           <Navbar />
           <main>{children}</main>
