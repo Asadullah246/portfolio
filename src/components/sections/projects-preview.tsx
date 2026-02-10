@@ -108,6 +108,24 @@ export function ProjectsPreview() {
                       </span>
                     )}
                   </div>
+
+                  {/* Live links */}
+                  {project.liveUrls && project.liveUrls.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {project.liveUrls.map((link) => (
+                        <a
+                          key={link.label}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="relative z-20 inline-flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-1 rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] hover:bg-[var(--accent)]/20 transition-colors"
+                        >
+                          <ExternalLink className="h-3 w-3" />
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 {/* Full card link overlay */}
