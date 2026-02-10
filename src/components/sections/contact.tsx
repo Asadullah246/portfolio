@@ -38,12 +38,15 @@ export function Contact() {
 
 
   const onSubmit = async (data: ContactFormData) => {
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    console.log("🔑 Access key loaded:", accessKey ? `${accessKey.slice(0, 8)}...` : "❌ MISSING");
+
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+          access_key: accessKey,
           name: data.name,
           email: data.email,
           subject: data.subject,
@@ -52,15 +55,18 @@ export function Contact() {
       });
 
       const result = await response.json();
+      console.log("📧 Web3Forms response:", result);
 
       if (result.success) {
         setIsSubmitted(true);
         reset();
         setTimeout(() => setIsSubmitted(false), 5000);
       } else {
+        console.error("❌ Submission failed:", result);
         alert("Failed to send message. Please try again.");
       }
-    } catch {
+    } catch (error) {
+      console.error("❌ Network error:", error);
       alert("Something went wrong. Please try again later.");
     }
   };
