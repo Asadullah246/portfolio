@@ -4,3 +4,4 @@ need to do :
 - update experineces
 - update the projects
 - contact form update
+- navigation not working properly of the navbar

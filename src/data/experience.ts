@@ -51,7 +51,7 @@ export const experiences: Experience[] = [
   },
   {
     id: "exp-3",
-    company: "Pxlhut",
+    company: "Unisight Technologies",
     role: "React Developer (Intern)",
     period: "2022 — 2023",
     description:

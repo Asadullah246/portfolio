@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowLeft,
   ExternalLink,
@@ -77,37 +78,39 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {/* Action buttons */}
         <AnimatedSection delay={0.1}>
           <div className="flex flex-wrap gap-3 mb-10">
-            {project.liveUrl && (
+            {project.liveUrls?.map((link) => (
               <Button
+                key={link.label}
                 asChild
                 className="bg-[var(--accent)] hover:bg-[var(--accent)]/90 text-white rounded-xl gap-2"
               >
                 <a
-                  href={project.liveUrl}
+                  href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <ExternalLink className="h-4 w-4" />
-                  Live Demo
+                  {link.label}
                 </a>
               </Button>
-            )}
-            {project.githubUrl && (
+            ))}
+            {project.githubUrls?.map((repo) => (
               <Button
+                key={repo.label}
                 asChild
                 variant="outline"
                 className="rounded-xl gap-2"
               >
                 <a
-                  href={project.githubUrl}
+                  href={repo.url}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <Github className="h-4 w-4" />
-                  Source Code
+                  {repo.label}
                 </a>
               </Button>
-            )}
+            ))}
           </div>
         </AnimatedSection>
 
@@ -115,11 +118,22 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <AnimatedSection delay={0.15}>
           <div className="relative h-64 md:h-80 lg:h-96 rounded-2xl bg-secondary overflow-hidden mb-12">
             <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/10 via-transparent to-[#d4a853]/10" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-8xl font-bold text-foreground/5">
-                {project.title.charAt(0)}
-              </span>
-            </div>
+            {project.thumbnail ? (
+              <Image
+                src={project.thumbnail}
+                alt={project.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 896px"
+                priority
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-8xl font-bold text-foreground/5">
+                  {project.title.charAt(0)}
+                </span>
+              </div>
+            )}
           </div>
         </AnimatedSection>
 

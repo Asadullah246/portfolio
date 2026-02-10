@@ -185,7 +185,7 @@ export function Hero() {
               {/* Image container */}
               <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[340px] lg:h-[340px] xl:w-[380px] xl:h-[380px] rounded-full overflow-hidden ring-2 ring-[var(--accent)]/20 ring-offset-4 ring-offset-background">
                 <Image
-                  src="/images/Asadullah1.jpeg"
+                  src="/images/asadullah-44.png"
                   alt={`${siteConfig.name} - ${siteConfig.role}`}
                   fill
                   priority
