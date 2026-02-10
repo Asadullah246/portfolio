@@ -35,15 +35,40 @@ export function Contact() {
     resolver: zodResolver(contactSchema),
   });
 
-  const onSubmit = async (data: ContactFormData) => {
-    // Simulate API call — replace with actual email service (Resend/EmailJS)
-    console.log("Contact form data:", data);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitted(true);
-    reset();
 
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
+
+  const onSubmit = async (data: ContactFormData) => {
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    console.log("🔑 Access key loaded:", accessKey ? `${accessKey.slice(0, 8)}...` : "❌ MISSING");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: data.name,
+          email: data.email,
+          subject: data.subject,
+          message: data.message,
+        }),
+      });
+
+      const result = await response.json();
+      console.log("📧 Web3Forms response:", result);
+
+      if (result.success) {
+        setIsSubmitted(true);
+        reset();
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        console.error("❌ Submission failed:", result);
+        alert("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("❌ Network error:", error);
+      alert("Something went wrong. Please try again later.");
+    }
   };
 
   return (

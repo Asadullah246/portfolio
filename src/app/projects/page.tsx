@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -29,16 +30,26 @@ export default function ProjectsPage() {
                 {/* Thumbnail */}
                 <div className="relative h-44 bg-secondary overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/10 via-transparent to-[#d4a853]/10" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-5xl font-bold text-foreground/5 group-hover:text-foreground/10 transition-colors">
-                      {project.title.charAt(0)}
-                    </span>
-                  </div>
+                  {project.thumbnail ? (
+                    <Image
+                      src={project.thumbnail}
+                      alt={project.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-5xl font-bold text-foreground/5 group-hover:text-foreground/10 transition-colors">
+                        {project.title.charAt(0)}
+                      </span>
+                    </div>
+                  )}
 
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
-                    {project.liveUrl && (
+                    {project.liveUrls && project.liveUrls.length > 0 && (
                       <a
-                        href={project.liveUrl}
+                        href={project.liveUrls[0].url}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="relative z-20 h-10 w-10 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
@@ -47,9 +58,9 @@ export default function ProjectsPage() {
                         <ExternalLink className="h-4.5 w-4.5" />
                       </a>
                     )}
-                    {project.githubUrl && (
+                    {project.githubUrls && project.githubUrls.length > 0 && (
                       <a
-                        href={project.githubUrl}
+                        href={project.githubUrls[0].url}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="relative z-20 h-10 w-10 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
@@ -89,6 +100,24 @@ export default function ProjectsPage() {
                       </span>
                     )}
                   </div>
+
+                  {/* Live links */}
+                  {project.liveUrls && project.liveUrls.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      {project.liveUrls.map((link) => (
+                        <a
+                          key={link.label}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="relative z-20 inline-flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-1 rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] hover:bg-[var(--accent)]/20 transition-colors"
+                        >
+                          <ExternalLink className="h-3 w-3" />
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 <Link
