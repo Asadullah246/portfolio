@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/data/site-config";
 
@@ -218,29 +218,7 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <a
-            href="#about"
-            aria-label="Scroll to about section"
-            className="flex flex-col items-center gap-2 text-muted-foreground/50 hover:text-muted-foreground transition-colors"
-          >
-            <span className="text-[10px] uppercase tracking-[0.2em] font-medium">
-              Scroll
-            </span>
-            <ArrowDown className="h-4 w-4" />
-          </a>
-        </motion.div>
-      </motion.div>
+
     </section>
   );
 }
