@@ -3,29 +3,28 @@
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { experiences } from "@/data/experience";
+import { education } from "@/data/experience";
 
-export function Experience() {
+export function Education() {
   return (
-    <section id="experience" className="section-padding">
+    <section id="education" className="section-padding">
       <div className="section-container">
         <AnimatedSection>
           <SectionHeading
-            label="Experience"
-            title="Where I&apos;ve worked"
-            description="My professional journey and career progression"
+            label="Education"
+            title="Academic Background"
+            description="My educational journey"
           />
         </AnimatedSection>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           <div className="relative">
-            {/* Timeline line */}
             <div className="absolute left-[11px] top-2 bottom-2 w-px bg-border" />
 
             <div className="space-y-8">
-              {experiences.map((exp, i) => (
+              {education.map((edu, i) => (
                 <motion.div
-                  key={exp.id}
+                  key={edu.id}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -36,7 +35,6 @@ export function Experience() {
                   }}
                   className="relative pl-8"
                 >
-                  {/* Timeline dot */}
                   <div className="absolute left-0 top-1.5 h-[22px] w-[22px] rounded-full border-2 border-[var(--accent)] bg-background flex items-center justify-center">
                     <div className="h-2 w-2 rounded-full bg-[var(--accent)]" />
                   </div>
@@ -45,40 +43,21 @@ export function Experience() {
                     <div className="flex items-start justify-between gap-3 mb-2">
                       <div>
                         <h4 className="font-semibold text-foreground">
-                          {exp.role}
+                          {edu.degree} in {edu.field}
                         </h4>
                         <p className="text-sm text-[var(--accent)] font-medium">
-                          {exp.company}
+                          {edu.institution}
                         </p>
                       </div>
                       <span className="text-xs text-muted-foreground whitespace-nowrap px-2.5 py-1 rounded-full bg-secondary">
-                        {exp.period}
+                        {edu.period}
                       </span>
                     </div>
-                    <p className="text-sm text-muted-foreground mb-3">
-                      {exp.description}
-                    </p>
-                    <ul className="space-y-1.5">
-                      {exp.achievements.map((achievement, j) => (
-                        <li
-                          key={j}
-                          className="text-sm text-muted-foreground flex items-start gap-2"
-                        >
-                          <span className="mt-2 h-1 w-1 rounded-full bg-[var(--accent)] shrink-0" />
-                          {achievement}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="mt-4 flex flex-wrap gap-1.5">
-                      {exp.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="text-[11px] px-2 py-0.5 rounded-md bg-secondary text-muted-foreground"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                    {edu.description && (
+                      <p className="text-sm text-muted-foreground">
+                        {edu.description}
+                      </p>
+                    )}
                   </div>
                 </motion.div>
               ))}
@@ -89,4 +68,3 @@ export function Experience() {
     </section>
   );
 }
-

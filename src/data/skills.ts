@@ -18,7 +18,6 @@ export const skillCategories: SkillCategory[] = [
       { name: "Next.js" },
       { name: "TypeScript" },
       { name: "Tailwind CSS" },
-      { name: "Shadcn UI" },
       { name: "Zustand" },
     ],
   },
@@ -28,8 +27,9 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { name: "Node.js" },
       { name: "Express.js" },
+      { name: "Nest.js" },
       { name: "Prisma" },
-      { name: "BullMQ" },
+      { name: "REST API" },
       { name: "Redis" },
       { name: "Socket.IO" },
     ],
@@ -40,15 +40,15 @@ export const skillCategories: SkillCategory[] = [
     skills: [{ name: "PostgreSQL" }, { name: "MongoDB" }],
   },
   {
-    title: "Tools & DevOps",
-    description: "Workflow automation and deployment",
+    title: "Tools & Integrations",
+    description: "Workflow automation, deployment, and third-party services",
     skills: [
       { name: "Git & GitHub" },
       { name: "Docker" },
+      { name: "Jest" },
       { name: "Stripe" },
       { name: "PayPal" },
       { name: "SSLCommerz" },
-      { name: "Linux" },
     ],
   },
 ];

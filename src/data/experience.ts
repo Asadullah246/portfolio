@@ -11,18 +11,58 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     id: "exp-1",
-    company: "Your Company Name",
-    role: "Full-Stack Developer",
-    period: "2024 — Present",
+    company: "Pxlhut",
+    role: "Backend Developer",
+    period: "2025 — 2026",
     description:
-      "Leading development of enterprise-grade web applications with modern technologies.",
+      "Developed and maintained backend systems for enterprise-grade SaaS applications using NodeJs, ExpressJs, NestJS and PostgreSQL.",
     achievements: [
-      "Architected and developed scalable multi-tenant SaaS platform",
-      "Implemented robust authentication and role-based access control system",
+      "Architected scalable multi-tenant SaaS platform with tenant-level data isolation",
+      "Integrated multiple payment gateways (Stripe, PayPal, SSLCommerz) with unified checkout flow",
+      "Implemented role-based and hybrid access control with granular, module-level permissions",
       "Designed real-time notification system using Socket.IO and Redis",
-      "Built automated reporting pipeline with BullMQ background jobs",
+      "Built background job processing pipelines with BullMQ",
     ],
-    technologies: ["Next.js", "TypeScript", "Node.js", "Prisma", "PostgreSQL"],
+    technologies: [
+      "Node.js",
+      "Express.js",
+      "Nest.js",
+      "TypeScript",
+      "Prisma",
+      "PostgreSQL",
+      "Redis",
+      "BullMQ",
+    ],
+  },
+  {
+    id: "exp-2",
+    company: "Shaderbytes, India",
+    role: "Junior Full Stack Developer",
+    period: "2022 — 2023",
+    description:
+      "Built and maintained full-stack web applications using React and Node.js with real-time features.",
+    achievements: [
+      "Developed responsive user interfaces with React.js and modern frontend tooling",
+      "Built RESTful APIs and server-side logic using Node.js and Express.js",
+      "Implemented real-time features including live chat and notifications using Socket.IO",
+      "Collaborated with cross-functional teams to deliver production-ready applications",
+    ],
+    technologies: ["React.js", "Node.js", "Express.js", "Socket.IO", "MongoDB"],
+  },
+  {
+    id: "exp-3",
+    company: "Pxlhut",
+    role: "React Developer (Intern)",
+    period: "2022 — 2023",
+    description:
+      "Contributed to a React-based SaaS application, implementing new features and resolving production bugs.",
+    achievements: [
+      "Developed and shipped new features for a production SaaS application using React.js",
+      "Identified and resolved critical bugs to improve application stability",
+      "Collaborated with senior developers to follow best practices and code review processes",
+      "Gained hands-on experience with component-driven architecture and state management",
+    ],
+    technologies: ["React.js", "JavaScript", "CSS", "REST API"],
   },
 ];
 
@@ -38,11 +78,11 @@ export interface Education {
 export const education: Education[] = [
   {
     id: "edu-1",
-    institution: "Your University",
+    institution: "Susong Durgapur Govt. College",
     degree: "Bachelor of Science",
-    field: "Computer Science & Engineering",
-    period: "2020 — 2024",
+    field: "Physics, Mathematics, Biology",
+    period: "2017 — 2020",
     description:
-      "Focused on software engineering, algorithms, and web technologies.",
+      "Studied a Bachelor of Science degree with a focus on Physics, Mathematics, and Biology.",
   },
 ];
